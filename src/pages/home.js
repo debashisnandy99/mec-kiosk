@@ -1,17 +1,16 @@
 import * as React from "react"
-import LoginPage from "../components/auth/index"
 import { isLoggedIn } from "../services/logauth"
 import { navigate } from "gatsby"
 
 const IndexPage = () => {
-  if (isLoggedIn()) {
+  if (!isLoggedIn()) {
     if (typeof window !== `undefined`) {
-      navigate("/home", {
+      navigate("/", {
         replace: true,
       })
     }
   } else {
-    return <LoginPage />
+    return <div></div>
   }
   return <div></div>
 }
